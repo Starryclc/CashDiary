@@ -14,7 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class GUIUtil {
-    private static String imageFolder = ".../resource/img";
+    private static String imageFolder = "resource/img";
+
 
     public static void setImageIcon(JButton b, String fileName, String tip) {
         ImageIcon i = new ImageIcon(new File(imageFolder, fileName).getAbsolutePath());

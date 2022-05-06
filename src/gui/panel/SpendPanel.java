@@ -1,13 +1,17 @@
 package gui.panel;
+
+import util.CircleBar;
+import util.ColorUtil;
+import util.GUIUtil;
+
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * 单例模式
- */
-
 
 public class SpendPanel extends JPanel {
+    static{
+        GUIUtil.useLNF();
+    }
     private static SpendPanel instance = new SpendPanel();
 
     public JLabel lMonthSpend = new JLabel("本月消费");
@@ -23,8 +27,22 @@ public class SpendPanel extends JPanel {
     public JLabel vMonthAvailable = new JLabel("￥2084");
     public JLabel vDayAvgAvailable = new JLabel("￥389");
     public JLabel vMonthLeftDay = new JLabel("15天");
+    CircleBar bar;
+    private SpendPanel(){
+        this.setLayout(new BorderLayout());
+        bar = new CircleBar();
+        bar.setBackgroundColor(ColorUtil.blueColor);
 
-    private SpendPanel(){};
+        GUIUtil.setColor(ColorUtil.grayColor, lMonthSpend, lTodaySpend, lAvgSpendPerDay, lMonthLeft, lDayAvgAvailable,
+                lMonthLeftDay, vAvgSpendPerDay, vMonthAvailable, vDayAvgAvailable, vMonthLeftDay);
+        GUIUtil.setColor(ColorUtil.blueColor, vMonthSpend, vTodaySpend);
+
+        vMonthSpend.setFont(new Font("微软雅黑", Font.BOLD, 23));
+        vTodaySpend.setFont(new Font("微软雅黑", Font.BOLD, 23));
+
+        this.add(center(), BorderLayout.CENTER);
+        this.add(south(), BorderLayout.SOUTH);
+    };
 
     public static SpendPanel getInstance(){
         if(instance == null) {
@@ -32,4 +50,45 @@ public class SpendPanel extends JPanel {
         }
         return instance;
     }
+
+    private JPanel center() {
+        JPanel p = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.add(west(), BorderLayout.WEST);
+        p.add(center2(),BorderLayout.CENTER);
+
+        return p;
+    }
+
+    private Component center2() {
+        return bar;
+    }
+
+    private Component west() {
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(4, 1));
+        p.add(lMonthSpend);
+        p.add(vMonthSpend);
+        p.add(lTodaySpend);
+        p.add(vTodaySpend);
+        return p;
+    }
+
+    private JPanel south() {
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(2, 4));
+
+        p.add(lAvgSpendPerDay);
+        p.add(lMonthLeft);
+        p.add(lDayAvgAvailable);
+        p.add(lMonthLeftDay);
+        p.add(vAvgSpendPerDay);
+        p.add(vMonthAvailable);
+        p.add(vDayAvgAvailable);
+        p.add(vMonthLeftDay);
+
+        return p;
+    }
+
+
 }
