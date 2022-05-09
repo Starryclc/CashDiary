@@ -1,6 +1,5 @@
 package DAO;
 
-import entity.Category;
 import entity.Config;
 import entity.Record;
 import util.DBUtil;
