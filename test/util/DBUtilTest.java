@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class DBUtilTest {
     @Test
     public void test() throws SQLException {
-        Connection conn = DBUtil.getConnect();
+        Connection conn = DBUtil.getConnection();
     }
 
 }

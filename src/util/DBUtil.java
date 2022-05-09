@@ -21,7 +21,7 @@ public class DBUtil {
         }
     }
 
-    public static Connection getConnect() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         String url = String.format("jdbc:mysql://%s:%d/%s?characterEncoding=UTF-8",ip, port,database);
         Connection conn = DriverManager.getConnection(url,user,password);
         //System.out.println("数据库连接成功");

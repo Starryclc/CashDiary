@@ -9,6 +9,14 @@ public class Record {
     private Date date;
     private String comment;
 
+    public Record(int id, int cid, int spend, Date date, String comment) {
+        this.id = id;
+        this.cid = cid;
+        this.spend = spend;
+        this.date = date;
+        this.comment = comment;
+    }
+
     public int getId() {
         return id;
     }
@@ -47,5 +55,16 @@ public class Record {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "id=" + id +
+                ", cid=" + cid +
+                ", spend=" + spend +
+                ", date=" + date +
+                ", comment='" + comment + '\'' +
+                '}';
     }
 }

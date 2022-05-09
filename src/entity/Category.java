@@ -3,7 +3,15 @@ package entity;
 public class Category {
     private int id;
     private String name;
-    private int recordNumber;
+
+    public Category(){
+        this.id = 0;
+        this.name = "";
+    }
+    public Category(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -13,20 +21,21 @@ public class Category {
         this.name = name;
     }
 
-    public void setRecordNumber(int recordNumber) {
-        this.recordNumber = recordNumber;
-    }
+
 
     public int getId() {
         return id;
-    }
-
-    public int getRecordNumber() {
-        return recordNumber;
     }
 
     public String getName() {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
