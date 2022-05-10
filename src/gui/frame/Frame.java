@@ -18,8 +18,8 @@ public class Frame extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public static void main(String[] args) {
-        instance.setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        instance.setVisible(true);
+//    }
 
 }
