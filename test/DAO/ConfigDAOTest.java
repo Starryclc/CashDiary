@@ -36,4 +36,11 @@ public class ConfigDAOTest {
         }
     }
 
+    @Test
+    public void getByKeyTest() {
+        ConfigDAO configDAO = new ConfigDAO();
+        Config config = configDAO.getByKey("key1");
+        System.out.println(config.toString());
+    }
+
 }

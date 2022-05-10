@@ -47,7 +47,7 @@ public class ConfigDAO {
     //改
     public void update(Config config) {
         String sql = String.format("update config set key_ = '%s', value = '%s' where id = %d", config.getKey(), config.getValue(), config.getId());
-        System.out.println(sql);
+        //System.out.println(sql);
         try{
             Connection connection = DBUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -97,5 +97,24 @@ public class ConfigDAO {
             e.printStackTrace();
         }
         return configs;
+    }
+
+    //按key查询
+    public Config getByKey(String key) {
+        String sql = "select * from config where key_ ='" + key+"'";
+        Config config = new Config();
+        try{
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()) {
+                config.setId(rs.getInt(1));
+                config.setKey(rs.getString(2));
+                config.setValue(rs.getString(3));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return config;
     }
 }

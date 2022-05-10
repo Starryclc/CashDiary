@@ -6,9 +6,7 @@ public class Config {
     private String value;
 
     public Config(){
-        this.id = 0;
-        this.key = "";
-        this.value = "";
+        new Config(0,"","");
     }
     public Config(int id, String key,String value){
         this.id = id;

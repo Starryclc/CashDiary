@@ -1,6 +1,7 @@
 package DAO;
 
 import entity.Category;
+import entity.Config;
 import util.DBUtil;
 
 import java.sql.Connection;
@@ -97,4 +98,6 @@ public class CategoryDAO {
         }
         return categorys;
     }
+
+
 }

@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import entity.Config;
+import gui.listener.ConfigListener;
+import service.ConfigService;
 import util.ColorUtil;
 import util.GUIUtil;
 
@@ -44,6 +47,18 @@ public class ConfigPanel extends JPanel {
         pSubmit.add(bSubmit);
         this.add(pSubmit,BorderLayout.CENTER);
 
+        ConfigListener listener = new ConfigListener();
+        bSubmit.addActionListener(listener);
+
+        this.setText();
+    }
+
+    private void setText() {
+        ConfigService service = new ConfigService();
+        String budget = service.get("budget");
+        String dbpath = service.get("dbpath");
+        tfMysqlPath.setText(dbpath);
+        tfBudget.setText(budget);
     }
 
 }
