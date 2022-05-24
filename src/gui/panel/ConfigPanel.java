@@ -14,7 +14,7 @@ import service.ConfigService;
 import util.ColorUtil;
 import util.GUIUtil;
 
-public class ConfigPanel extends JPanel {
+public class ConfigPanel extends WorkingPanel {
     static{
         GUIUtil.useLNF();
     }
@@ -47,8 +47,7 @@ public class ConfigPanel extends JPanel {
         pSubmit.add(bSubmit);
         this.add(pSubmit,BorderLayout.CENTER);
 
-        ConfigListener listener = new ConfigListener();
-        bSubmit.addActionListener(listener);
+
 
         this.setText();
     }
@@ -61,4 +60,19 @@ public class ConfigPanel extends JPanel {
         tfBudget.setText(budget);
     }
 
+    @Override
+    public void addListener() {
+        ConfigListener listener = new ConfigListener();
+        bSubmit.addActionListener(listener);
+
+    }
+
+    @Override
+    public void updateData() {
+        String budget =  new ConfigService().get("budget");
+        String mysqlPath = new ConfigService().get("dbpath");
+        tfBudget.setText(budget);
+        tfMysqlPath.setText(mysqlPath);
+        tfBudget.grabFocus();
+    }
 }

@@ -3,6 +3,7 @@ package entity;
 public class Category {
     private int id;
     private String name;
+    private int recordNumber;
 
     public Category(){
         this.id = 0;
@@ -31,11 +32,16 @@ public class Category {
         return name;
     }
 
+    public int getRecordNumber() {
+        return recordNumber;
+    }
+
+    public void setRecordNumber(int recordNumber) {
+        this.recordNumber = recordNumber;
+    }
+
     @Override
     public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return name;
     }
 }

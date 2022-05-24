@@ -1,51 +1,61 @@
 package gui.model;
 
-import javax.swing.*;
-import javax.swing.event.ListDataListener;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryComboBoxModel implements ComboBoxModel {
-    public List<String> cs = new ArrayList<>();
-    String selected;
+import javax.swing.ComboBoxModel;
+import javax.swing.event.ListDataListener;
+
+import entity.Category;
+import service.CategoryService;
+
+public class CategoryComboBoxModel implements ComboBoxModel<Category>{
+
+    public List<Category> cs = new CategoryService().list();
+
+    public Category c;
 
     public CategoryComboBoxModel(){
-        cs.add("1");
-        cs.add("2");
-        cs.add("3");
-        cs.get(0);
-    }
-
-    @Override
-    public void setSelectedItem(Object anItem) {
-        selected = (String) anItem;
-
-    }
-
-    @Override
-    public Object getSelectedItem() {
-        return selected;
+        if(!cs.isEmpty())
+            c=cs.get(0);
     }
 
     @Override
     public int getSize() {
+        // TODO Auto-generated method stub
+
         return cs.size();
     }
 
     @Override
-    public Object getElementAt(int index) {
+    public Category getElementAt(int index) {
+        // TODO Auto-generated method stub
         return cs.get(index);
     }
 
     @Override
     public void addListDataListener(ListDataListener l) {
+        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void removeListDataListener(ListDataListener l) {
+        // TODO Auto-generated method stub
 
     }
 
+    @Override
+    public void setSelectedItem(Object anItem) {
+        c = (Category) anItem;
+    }
+
+    @Override
+    public Object getSelectedItem() {
+        if(!cs.isEmpty())
+            return c;
+        else
+            return null;
+
+    }
 
 }

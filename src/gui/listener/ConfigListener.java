@@ -18,19 +18,21 @@ public class ConfigListener implements ActionListener {
             return;
 
         String dbpath =p.tfMysqlPath.getText();
+        ConfigService service = new ConfigService();
         if (dbpath.length() != 0) {
             File commandFile = new File(dbpath, "bin/mysql.exe");
             if (!commandFile.exists()) {
                 JOptionPane.showMessageDialog(p, "Mysql数据库路径不正确");
                 p.tfMysqlPath.grabFocus();
                 return;
-
             }
-                ConfigService service = new ConfigService();
-                service.update("budget", p.tfBudget.getText());
-                service.update("dbpath", p.tfMysqlPath.getText());
-                JOptionPane.showMessageDialog(p, "设置成功");
-
+            service.update("dbpath", p.tfMysqlPath.getText());
         }
+        if(p.tfBudget.getText().length() != 0){
+            service.update("budget", p.tfBudget.getText());
+        }
+
+        JOptionPane.showMessageDialog(p, "设置成功");
+
     }
 }

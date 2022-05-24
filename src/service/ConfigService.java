@@ -6,6 +6,7 @@ import entity.Config;
 public class ConfigService {
     private static ConfigDAO dao = new ConfigDAO();
 
+
     static {
         init("budget","3000"); //default_budget = 3000
         init("dbpath","");
@@ -32,6 +33,7 @@ public class ConfigService {
     public void update(String key, String value) {
         Config config = dao.getByKey(key);
         config.setValue(value);
+        //System.out.println(config);
         dao.update(config);
     }
 
